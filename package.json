@@ -1,8 +1,8 @@
 {
-  "name": "tree-sitter-plasimo",
+  "name": "tree-sitter-gum",
   "version": "0.1.0",
   "description": "Parser for .gum and .gin files used in PLASIMO",
-  "repository": "https://github.com/tree-sitter/tree-sitter-plasimo",
+  "repository": "https://github.com/tree-sitter/tree-sitter-gum",
   "license": "MIT",
   "author": {
     "name": "Jan Kuhfeld",
@@ -14,7 +14,8 @@
     "incremental",
     "parsing",
     "tree-sitter",
-    "plasimo"
+    "plasimo",
+    "gum"
   ],
   "files": [
     "grammar.js",
