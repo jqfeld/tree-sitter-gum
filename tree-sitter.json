@@ -1,0 +1,40 @@
+{
+  "$schema": "https://tree-sitter.github.io/tree-sitter/assets/schemas/config.schema.json",
+  "grammars": [
+    {
+      "name": "plasimo",
+      "camelcase": "Plasimo",
+      "title": "Plasimo",
+      "scope": "source.plasimo",
+      "file-types": [
+        "gum,",
+        "gin"
+      ],
+      "injection-regex": "^plasimo$",
+      "class-name": "TreeSitterPlasimo"
+    }
+  ],
+  "metadata": {
+    "version": "0.1.0",
+    "license": "MIT",
+    "description": "Parser for .gum and .gin files used in PLASIMO",
+    "authors": [
+      {
+        "name": "Jan Kuhfeld",
+        "email": "jankuhfeld@plasma-matters.nl"
+      }
+    ],
+    "links": {
+      "repository": "https://github.com/tree-sitter/tree-sitter-plasimo"
+    }
+  },
+  "bindings": {
+    "c": true,
+    "go": true,
+    "node": true,
+    "python": true,
+    "rust": true,
+    "swift": true,
+    "zig": false
+  }
+}
