@@ -11,12 +11,16 @@ module.exports = grammar({
   name: 'gum',
 
   extras: $ => [
-    /\s/,
+    /[ \t]/,
     $.comment,
   ],
 
+
   rules: {
     source_file: $ => repeat($._statement),
+    // # line comment
+    comment: _ => token(seq('#', /[^\r\n]*/)),
+    _newline: _ => token(/\n/),
 
     _statement: $ => choice(
       $.leafblock,
@@ -25,6 +29,7 @@ module.exports = grammar({
       $.include,
       $.key_value,
       $.key_value_disabled,
+      $._newline,
     ),
 
     // Key { ... }  or  _Key { ... }
@@ -42,44 +47,12 @@ module.exports = grammar({
     ),
 
 
-    // Identifiers for keys: optional _ prefix (disabled blocks/declares)
-    // Species names in keys can contain [, ], +, -
-    identifier: _ => /[A-Za-z][A-Za-z_0-9\[\]\+\-\.]*/,
-    identifier_disabled: _ => /_?[A-Za-z][A-Za-z_0-9\[\]\+\-\.]*/,
 
-
-    // # line comment
-    comment: _ => token(seq('#', /[^\r\n]*/)),
-
-    // Key Value [extra_values...]
-    // Some statements have multiple values: "Reaction "f" rate", "Viewer path label "" """,
-    // "Line val val val val". 
-    // Needs to end at \n to avoid parsing following keys as values
-    key_value: $ => seq(
-      field('key', $.identifier),
-      repeat(field('value', $._value)),
-      /\n/,
-    ),
-
-
-    key_value_disabled: $ => seq(
-      field('key', $.identifier_disabled),
-      field('value', $._value),
-      repeat(field('value', $._value)),
-      /\n/,
-    ),
-
-
-    _value: $ => choice(
-      $.string,
-      $.env_path,
-      $.bare_value,
-    ),
 
 
     // Declare name=expr  or  _Declare name=expr
     declare: $ => seq(
-      "Declare",
+      token("Declare"),
       field('name', $.identifier),
       '=',
       field('value', $._value),
@@ -88,11 +61,44 @@ module.exports = grammar({
 
     // Include path
     include: $ => seq(
-      'Include',
+      token('Include'),
       field('path', $.include_path),
     ),
-
     include_path: _ => /[^\s{}"]+/,
+
+    // Identifiers for keys: optional _ prefix (disabled blocks/declares)
+    // Species names in keys can contain [, ], +, -
+    identifier: _ => /[A-Za-z][A-Za-z_0-9\[\]\+\-\.]*/,
+    identifier_disabled: _ => /_?[A-Za-z][A-Za-z_0-9\[\]\+\-\.]*/,
+
+    // Key Value [extra_values...]
+    // Some statements have multiple values: "Reaction "f" rate", "Viewer path label "" """,
+    // "Line val val val val". 
+    // Needs to end at \n to avoid parsing following keys as values
+    key_value: $ => seq(
+      field('key', $.identifier),
+      field('value', $._value),
+      optional(repeat(field('value', $._value))),
+      $._newline,
+    ),
+
+
+    key_value_disabled: $ => seq(
+      field('key', $.identifier_disabled),
+      field('value', $._value),
+      optional(repeat(field('value', $._value))),
+      $._newline,
+    ),
+
+
+    _value: $ => choice(
+      $.string,
+      $.env_path,
+      $.number,
+      $.bare_value
+    ),
+
+
 
 
     // Quoted string (allow multi-line for Annotation values)

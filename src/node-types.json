@@ -26,6 +26,10 @@
             "named": true
           },
           {
+            "type": "number",
+            "named": true
+          },
+          {
             "type": "string",
             "named": true
           }
@@ -65,7 +69,7 @@
       },
       "value": {
         "multiple": true,
-        "required": false,
+        "required": true,
         "types": [
           {
             "type": "bare_value",
@@ -73,6 +77,10 @@
           },
           {
             "type": "env_path",
+            "named": true
+          },
+          {
+            "type": "number",
             "named": true
           },
           {
@@ -107,6 +115,10 @@
           },
           {
             "type": "env_path",
+            "named": true
+          },
+          {
+            "type": "number",
             "named": true
           },
           {
@@ -280,6 +292,10 @@
   },
   {
     "type": "include_path",
+    "named": true
+  },
+  {
+    "type": "number",
     "named": true
   },
   {

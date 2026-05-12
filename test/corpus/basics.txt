@@ -12,6 +12,21 @@ Type    Ambipolar2T-1D
     value: (bare_value)))
 
 ================================================================================
+Key-value pair: multiple values
+================================================================================
+
+Property Type Electrode
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (key_value
+    key: (identifier)
+    value: (bare_value)
+    value: (bare_value)
+    ))
+
+================================================================================
 Key-value pair: string
 ================================================================================
 
@@ -35,7 +50,7 @@ MaximumIterations   1000
 (source_file
   (key_value
     key: (identifier)
-    value: (bare_value))
+    value: (number))
 )
 
 ================================================================================
@@ -207,3 +222,41 @@ URF 'pi
   (key_value
     key: (identifier)
     value: (bare_value)))
+
+
+====
+Materials block
+====
+
+Material	{
+  Id	3
+  Property	Type	Dielectricum
+  Name	Quartz
+  Property	Eps_r	3.5
+}
+
+----
+
+(source_file
+  (leafblock
+    key: (identifier)
+    (key_value
+      key: (identifier)
+      value: (number)
+    )
+    (key_value
+      key: (identifier)
+      value: (bare_value)
+      value: (bare_value)
+    )
+    (key_value
+      key: (identifier)
+      value: (bare_value)
+    )
+    (key_value
+      key: (identifier)
+      value: (bare_value)
+      value: (number)
+    )
+  )
+)
