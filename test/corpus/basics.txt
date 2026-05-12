@@ -35,8 +35,8 @@ MaximumIterations   1000
 (source_file
   (key_value
     key: (identifier)
-    value: (quantity
-      (number))))
+    value: (bare_value))
+)
 
 ================================================================================
 Key-value pair: quantity with unit
@@ -49,10 +49,7 @@ InitialValue    400*Pa
 (source_file
   (key_value
     key: (identifier)
-    value: (quantity
-      (number)
-      (unit_expr
-        (unit_atom)))))
+    value: (bare_value)))
 
 ================================================================================
 Key-value pair: quantity with compound unit
@@ -65,14 +62,7 @@ C   2.3e-14*m^3/s
 (source_file
   (key_value
     key: (identifier)
-    value: (quantity
-      (number)
-      (unit_expr
-        (unit_div
-          (unit_power
-            (unit_atom)
-            (unit_exponent))
-          (unit_atom))))))
+    value: (bare_value)))
 
 ================================================================================
 Key-value pair: negative exponent unit
@@ -85,12 +75,7 @@ Probability 1.278e+07*s^-1
 (source_file
   (key_value
     key: (identifier)
-    value: (quantity
-      (number)
-      (unit_expr
-        (unit_power
-          (unit_atom)
-          (unit_exponent))))))
+    value: (bare_value)))
 
 ================================================================================
 Empty block
@@ -102,7 +87,7 @@ CrossSections {
 --------------------------------------------------------------------------------
 
 (source_file
-  (block
+  (leafblock
     key: (identifier)))
 
 ================================================================================
@@ -116,7 +101,7 @@ Discretizer {
 --------------------------------------------------------------------------------
 
 (source_file
-  (block
+  (leafblock
     key: (identifier)
     (key_value
       key: (identifier)
@@ -135,9 +120,9 @@ IterConfig {
 --------------------------------------------------------------------------------
 
 (source_file
-  (block
+  (leafblock
     key: (identifier)
-    (block
+    (leafblock
       key: (identifier)
       (key_value
         key: (identifier)
@@ -154,8 +139,8 @@ _ChemSourceClipping {
 --------------------------------------------------------------------------------
 
 (source_file
-  (block
-    key: (identifier)
+  (leafblock_disabled
+    key: (identifier_disabled)
     (key_value
       key: (identifier)
       value: (bare_value))))
@@ -170,11 +155,9 @@ Declare r0=0.05*m
 
 (source_file
   (declare
-    name: (bare_identifier)
-    value: (quantity
-      (number)
-      (unit_expr
-        (unit_atom)))))
+    name: (identifier)
+    value: (bare_value)
+  ))
 
 ================================================================================
 Disabled Declare
@@ -185,12 +168,9 @@ _Declare P_in=6268*Pa
 --------------------------------------------------------------------------------
 
 (source_file
-  (declare
-    name: (bare_identifier)
-    value: (quantity
-      (number)
-      (unit_expr
-        (unit_atom)))))
+  (key_value_disabled
+    key: (identifier_disabled)
+    value: (bare_value)))
 
 ================================================================================
 Include directive
@@ -226,4 +206,4 @@ URF 'pi
 (source_file
   (key_value
     key: (identifier)
-    value: (named_constant)))
+    value: (bare_value)))

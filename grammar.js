@@ -22,9 +22,9 @@ module.exports = grammar({
       $.leafblock,
       $.leafblock_disabled,
       $.declare,
-      $.declare_disabled,
       $.include,
       $.key_value,
+      $.key_value_disabled,
     ),
 
     // Key { ... }  or  _Key { ... }
