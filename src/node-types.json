@@ -65,7 +65,7 @@
       },
       "value": {
         "multiple": true,
-        "required": true,
+        "required": false,
         "types": [
           {
             "type": "bare_value",

@@ -53,12 +53,12 @@ module.exports = grammar({
 
     // Key Value [extra_values...]
     // Some statements have multiple values: "Reaction "f" rate", "Viewer path label "" """,
-    // "Line val val val val". Extra values are restricted to non-letter-start types so
-    // the next statement's identifier key is never accidentally consumed as an extra value.
+    // "Line val val val val". 
+    // Needs to end at \n to avoid parsing following keys as values
     key_value: $ => seq(
       field('key', $.identifier),
-      field('value', $._value),
       repeat(field('value', $._value)),
+      /\n/,
     ),
 
 
@@ -66,6 +66,7 @@ module.exports = grammar({
       field('key', $.identifier_disabled),
       field('value', $._value),
       repeat(field('value', $._value)),
+      /\n/,
     ),
 
 
