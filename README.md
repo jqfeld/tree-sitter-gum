@@ -14,7 +14,7 @@ the following lua snippet:
       local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
       parser_config.gum = {
         install_info = {
-          url = "/path/to/this/directory",
+          url = "https://github.com/jqfeld/tree-sitter-gum.git",
           branch = "main",
           files = { "src/parser.c" },
           generate_requires_npm = false,
