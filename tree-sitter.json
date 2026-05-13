@@ -25,7 +25,7 @@
       }
     ],
     "links": {
-      "repository": "https://github.com/tree-sitter/tree-sitter-gum"
+      "repository": "https://github.com/jqfeld/tree-sitter-gum"
     }
   },
   "bindings": {
